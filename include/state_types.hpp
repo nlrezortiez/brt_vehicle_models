@@ -10,16 +10,8 @@ struct DYN_T {
 };
 }  // namespace tags
 
-template <typename CarModelType>
+template <typename CarModelType = tags::KIN_T>
 struct CarStateVec {
-};
-
-template <typename CarModelType>
-struct CarStateChangeVec {
-};
-
-template <>
-struct CarStateVec<tags::KIN_T> {
   double x{.0f};
   double y{.0f};
   double yaw{.0f};
@@ -43,8 +35,8 @@ struct CarStateVec<tags::DYN_T> {
   }
 };
 
-template <>
-struct CarStateChangeVec<tags::KIN_T> {
+template <typename CarModelType = tags::KIN_T>
+struct CarStateChangeVec {
   double a;
   double steeringAngle;
 };
