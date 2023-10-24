@@ -5,5 +5,9 @@ project(car_test LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS On)
 
-add_executable(${CMAKE_PROJECT_NAME} test.cc)
+set(BRT_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
+set(BRT_SRC_DIR ${CMAKE_SOURCE_DIR}/src)
+
+add_subdirectory(${BRT_SRC_DIR})
+
 add_compile_definitions(KBM)
