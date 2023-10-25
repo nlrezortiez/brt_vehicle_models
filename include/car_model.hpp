@@ -14,10 +14,9 @@ public:
   void influence(const InputVec<tags::KIN_T> &inputVec) noexcept
   {
     d_state.v += inputVec.a * d_dt;
-    d_state.yaw += d_state.v * (std::tan(inputVec.steeringAngle) / d_carSpecs.L) * d_dt;
-
     d_state.x += d_state.v * std::cos(d_state.yaw) * d_dt;
     d_state.y += d_state.v * std::sin(d_state.yaw) * d_dt;
+    d_state.yaw += d_state.v * (std::tan(inputVec.steeringAngle) / d_carSpecs.L) * d_dt;
   }
 
   void influence(const InputVec<tags::DYN_T> &inputVec) noexcept
