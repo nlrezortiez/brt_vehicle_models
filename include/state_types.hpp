@@ -27,7 +27,7 @@ struct CarStateVec<tags::DYN_T> {
   double yaw{.0f};
   double v_x{.0f};
   double v_y{.0f};
-  double r{.0f};
+  double r{.0f};  // omega
 
   void log() const noexcept
   {
@@ -36,13 +36,13 @@ struct CarStateVec<tags::DYN_T> {
 };
 
 template <typename CarModelType = tags::KIN_T>
-struct CarStateChangeVec {
+struct InputVec {
   double a;
   double steeringAngle;
 };
 
 template <>
-struct CarStateChangeVec<tags::DYN_T> {
+struct InputVec<tags::DYN_T> {
   double throttle;
   double steeringAngle;
   double brakes;
