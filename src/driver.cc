@@ -16,7 +16,7 @@ int main()
 
   for (const auto &input : inputChanges) {
     car.nextState(input);
-    // car.log();
+    car.log();
   }
 
   return EXIT_SUCCESS;
