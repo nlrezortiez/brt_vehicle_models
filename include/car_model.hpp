@@ -31,8 +31,6 @@ public:
     const double throttle = inputVec.throttle;
     const double brakes = inputVec.brakes;
 
-    log();
-
     double F_drv = throttle * throttle * d_carSpecs.C_m;
 
     double F_rrr = d_carSpecs.C_rr * std::tanh(d_state.vx);
