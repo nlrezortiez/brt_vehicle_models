@@ -5,8 +5,11 @@
 #include <vector>
 #include <fstream>
 
-template <typename CarModelType = tags::KIN_T>
-void getChanges(std::vector<InputVec<CarModelType>> &changesVec)
+template <typename CarModelType>
+void getChanges(std::vector<InputVec<CarModelType>> &);
+
+template <>
+void getChanges(std::vector<InputVec<tags::KIN_T>> &changesVec)
 {
   std::ifstream input{"../test_data/input.txt", std::ios_base::in};
   int n;

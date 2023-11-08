@@ -1,7 +1,7 @@
+#include <vector>
+
 #include "car_model.hpp"
 #include "input_handler.hpp"
-
-#include <vector>
 
 int main()
 {
@@ -14,9 +14,9 @@ int main()
   std::vector<InputVec<decltype(car)::modelType>> inputChanges;
   getChanges(inputChanges);
 
-  for (const auto &ch : inputChanges) {
-    car.influence(ch);
-    car.log();
+  for (const auto &input : inputChanges) {
+    car.nextState(input);
+    // car.log();
   }
 
   return EXIT_SUCCESS;

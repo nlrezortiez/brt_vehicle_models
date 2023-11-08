@@ -10,8 +10,16 @@ struct DYN_T {
 };
 }  // namespace tags
 
-template <typename CarModelType = tags::KIN_T>
+template <typename T>
 struct CarStateVec {
+};
+
+template <typename T>
+struct InputVec {
+};
+
+template <>
+struct CarStateVec<tags::KIN_T> {
   double x{.0f};
   double y{.0f};
   double yaw{.0f};
@@ -25,18 +33,18 @@ struct CarStateVec<tags::DYN_T> {
   double x{.0f};
   double y{.0f};
   double yaw{.0f};
-  double v_x{.0f};
-  double v_y{.0f};
-  double r{.0f};  // omega
+  double vx{.0f};
+  double vy{.0f};
+  double r{.0f};  // dot_omega
 
   void log() const noexcept
   {
-    std::cout << x << " " << y << " " << yaw << " " << v_x << " " << v_y << " " << r << std::endl;
+    std::cout << x << " " << y << " " << yaw << " " << vx << " " << vy << " " << r << std::endl;
   }
 };
 
-template <typename CarModelType = tags::KIN_T>
-struct InputVec {
+template <>
+struct InputVec<tags::KIN_T> {
   double a;
   double steeringAngle;
 };
