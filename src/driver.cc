@@ -14,9 +14,16 @@ int main()
   std::vector<InputVec<decltype(car)::modelType>> inputChanges;
   getChanges(inputChanges);
 
-  for (const auto &input : inputChanges) {
-    car.nextState(input);
-    car.log();
+  int inputIdx = 1;
+
+  for (double i = 0.0; i < car.d_dt * n_changes; i += 0.001) {
+    if (std::abs(i - inputIdx * car.d_dt) <= 1e-6) {
+      ++inputIdx;
+      std::cout << "t=" << i << ": ";
+      car.log();
+    }
+
+    car.nextState(inputChanges[inputIdx - 1]);
   }
 
   return EXIT_SUCCESS;

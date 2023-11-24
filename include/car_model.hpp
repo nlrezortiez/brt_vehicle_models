@@ -31,7 +31,7 @@ public:
     const double throttle = inputVec.throttle;
     const double brakes = inputVec.brakes;
 
-    double F_drv = throttle * throttle * d_carSpecs.C_m;
+    double F_drv = throttle * d_carSpecs.C_m;
 
     double F_rrr = d_carSpecs.C_rr * std::tanh(d_state.vx);
     double F_rrf = d_carSpecs.C_rr * std::tanh(d_state.vx);
@@ -76,12 +76,13 @@ private:
     double C_rr{200.0f};
     double C_d{1.53f};
     double C_bf{5411.0f}, C_br{2650.0f};
-    double C_x{20000.0f};
+    double C_x{-20000.0f};
   };
 
 private:
   CarStateVec<CarModelType> d_state{};
   CarSpecs d_carSpecs{};
 
-  double d_dt{.5f};
+public:
+  double d_dt{.05f};
 };
